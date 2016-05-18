@@ -52,6 +52,7 @@ class Eslint implements \PHPCI\Plugin
         $cmd = 'cd ' . $this->directory . '; ' . $this->command;
         $this->phpci->executeCommand($cmd);
         $output = $this->phpci->getLastOutput();
+        $output = implode("\n", array_slice(explode("\n", $output), 4));
 
         list($errors, $warnings) = $this->processReport($output);
 
