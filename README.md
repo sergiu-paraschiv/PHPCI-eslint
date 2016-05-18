@@ -30,5 +30,7 @@ Then the task to `phpci.yml`:
 ```
 
 Npm should run with the `-s` flag.
+
 Eslint should run with the `-f json` flag.
+
 `lint:ci` in `package.json` should be `"lint:ci": "eslint 'app/**/*.js' -f json; exit 0",`
