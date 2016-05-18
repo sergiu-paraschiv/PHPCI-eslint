@@ -7,9 +7,6 @@ use PHPCI\Model\Build;
 use PHPCI\Model\BuildError;
 use PHPCI\Helper\Lang;
 
-/**
- * Update related Redmine issue with build status
- */
 class Eslint implements \PHPCI\Plugin
 {
     public function __construct(Builder $phpci, Build $build, array $options = array())
@@ -41,12 +38,12 @@ class Eslint implements \PHPCI\Plugin
     public function execute()
     {
         if (empty($this->command)) {
-            $this->phpci->logFailure('Configuration command found.');
+            $this->phpci->logFailure('Configuration command not found.');
             return false;
         }
 
         if (empty($this->directory)) {
-            $this->phpci->logFailure('Configuration directory found.');
+            $this->phpci->logFailure('Configuration directory not found.');
             return false;
         }
 
