@@ -1,0 +1,11 @@
+{
+    "name": "sergiu-paraschiv/PHPCI-eslint",
+    "description": "npm eslint plugin for PHPCI",
+    "authors": [
+        {
+            "name": "Sergiu Paraschiv",
+            "email": "sergiu.paraschiv@array51.com"
+        }
+    ],
+    "require": {}
+}
