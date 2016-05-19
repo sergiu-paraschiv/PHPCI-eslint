@@ -17,6 +17,7 @@ class Eslint implements \PHPCI\Plugin
         $this->command = '';
         $this->allowed_warnings = 0;
         $this->allowed_errors = 0;
+        $this->data_offset = 0;
 
         if (isset($options['directory'])) {
             $this->directory = $options['directory'];
@@ -32,6 +33,10 @@ class Eslint implements \PHPCI\Plugin
 
         if (isset($options['allowed_errors'])) {
             $this->allowed_errors = $options['allowed_errors'];
+        }
+
+        if (isset($options['data_offset'])) {
+            $this->data_offset = $options['data_offset'];
         }
     }
 
@@ -52,7 +57,10 @@ class Eslint implements \PHPCI\Plugin
         $cmd = 'cd ' . $this->directory . '; ' . $this->command;
         $this->phpci->executeCommand($cmd);
         $output = $this->phpci->getLastOutput();
-        $output = implode("\n", array_slice(explode("\n", $output), 4));
+
+        if($this->data_offset) {
+            $output = implode("\n", array_slice(explode("\n", $output), $this->data_offset));
+        }
 
         list($errors, $warnings) = $this->processReport($output);
 
