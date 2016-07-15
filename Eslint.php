@@ -67,11 +67,11 @@ class Eslint implements \PHPCI\Plugin
         $this->phpci->logExecOutput(true);
 
         if ($this->allowed_warnings != -1 && $warnings > $this->allowed_warnings) {
-            $success = false;
+            return false;
         }
 
         if ($this->allowed_errors != -1 && $errors > $this->allowed_errors) {
-            $success = false;
+            return false;
         }
 
         return true;
