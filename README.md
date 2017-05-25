@@ -11,12 +11,15 @@ composer require sergiu-paraschiv/phpci-eslint
 
 Then the task to `phpci.yml`:
 ```
-\SergiuParaschiv\PHPCI\Plugin\Eslint:
-    directory: "frontend"
-    command: "npm run lint:ci"
-    allowed_errors: 10
-    allowed_warnings: 20
-    data_offset: 2
+test:
+    ...
+    \SergiuParaschiv\PHPCI\Plugin\Eslint:
+        directory: "frontend"
+        command: "npm run lint:ci"
+        allowed_errors: 10
+        allowed_warnings: 20
+        data_offset: 2
+    ...
 ```
 
 Eslint should run with the `-f json` flag.
